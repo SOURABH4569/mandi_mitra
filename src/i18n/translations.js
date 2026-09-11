@@ -9,7 +9,7 @@ export const LANGUAGES = [
 export const DEFAULT_LANG = "hi";
 
 export const translations = {
-  "app.name": { hi: "किसान मंडी सहायक", en: "Kisan Mandi Sahayak", mr: "किसान मंडी सहायक" },
+  "app.name": { hi: "किसान मंडी सहायक", en: "Kisan Mandi Sahayak123", mr: "किसान मंडी सहायक" },
 
   // Login
   "login.heading": { hi: "अपनी उपज का सही दाम, सही मंडी में", en: "The right price for your produce, in the right mandi", mr: "तुमच्या शेतमालाचा योग्य भाव, योग्य बाजारात" },
