@@ -1,0 +1,32 @@
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap');
+
+:root{
+  --bg: #FAF8F2;
+  --paper: #FFFFFF;
+  --ink: #1E2A1F;
+  --ink-soft: #55604F;
+  --forest: #2F4B3C;
+  --forest-dark: #223729;
+  --wheat: #D9A94C;
+  --wheat-soft: #F2E2B8;
+  --clay: #A8503A;
+  --sage: #DCE3D3;
+  --line: #D8D3C4;
+}
+
+*{ box-sizing: border-box; }
+html, body, #root{ margin:0; padding:0; min-height:100vh; }
+body{
+  background: var(--bg);
+  color: var(--ink);
+  font-family: 'Inter', sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+h1, h2, h3, .display{
+  font-family: 'Fraunces', serif;
+  color: var(--forest-dark);
+  margin: 0;
+}
+button{ font-family: 'Inter', sans-serif; }
+::-webkit-scrollbar{ width: 8px; }
+::-webkit-scrollbar-thumb{ background: var(--line); border-radius: 4px; }
