@@ -37,8 +37,8 @@ export const translations = {
 
   // Tabs
   "tabs.mandiBhaav": { hi: "मंडी भाव", en: "Mandi Prices", mr: "बाजार भाव" },
-  "tabs.lot": { hi: "लॉट बनाएं", en: "Create Lot change kia", mr: "लॉट तयार करा" },
-  "tabs.offers": { hi: "खरीदार ऑफर", en: "Buyer Offers", mr: "खरेदीदार ऑफर" },
+  "tabs.lot": { hi: "लॉट बनाएं", en: "Create Lot", mr: "लॉट तयार करा" },
+  "tabs.offers": { hi: "खरीदार ऑफर", en: "Buyer Offers chnage kia", mr: "खरेदीदार ऑफर" },
   "tabs.transactions": { hi: "लेन-देन स्थिति", en: "Transaction Status", mr: "व्यवहार स्थिती" },
 
   // Coming soon
