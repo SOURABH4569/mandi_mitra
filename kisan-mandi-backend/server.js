@@ -12,7 +12,12 @@ const path = require("path");
 const buyers = require("./data/buyers");
 
 const app = express();
-app.use(cors());
+app.use(cors({
+  origin: [
+    "http://localhost:5173",
+    "https://mandi-mitra-umber.vercel.app"
+  ]
+}));
 app.use(express.json());
 
 const DB_PATH = path.join(__dirname, "data", "db.json");
