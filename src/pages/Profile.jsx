@@ -1,24 +1,17 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { cropMeta } from "../data/mandis";
+import { CROP_KEYS } from "../data/cropMeta";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Profile({ setFarmer }) {
   const { t } = useLanguage();
-
   const [name, setName] = useState("Ramesh Kumar");
   const [village, setVillage] = useState("Raebareli, Uttar Pradesh");
   const [crop, setCrop] = useState("wheat");
-
   const navigate = useNavigate();
 
   const handleContinue = () => {
-    setFarmer({
-      name: name || t("profile.defaultName"),
-      village: village || "Raebareli",
-      crop,
-    });
-
+    setFarmer({ name: name || "Kisan Bhai", village: village || "Raebareli", crop });
     navigate("/dashboard");
   };
 
@@ -31,12 +24,10 @@ export default function Profile({ setFarmer }) {
         </div>
 
         <h1>{t("profile.title")}</h1>
-
         <p className="sub">{t("profile.subtitle")}</p>
 
         <div className="field">
           <label htmlFor="fname">{t("profile.nameLabel")}</label>
-
           <input
             id="fname"
             type="text"
@@ -46,10 +37,7 @@ export default function Profile({ setFarmer }) {
         </div>
 
         <div className="field">
-          <label htmlFor="village">
-            {t("profile.villageLabel")}
-          </label>
-
+          <label htmlFor="village">{t("profile.villageLabel")}</label>
           <input
             id="village"
             type="text"
@@ -62,15 +50,13 @@ export default function Profile({ setFarmer }) {
           <label>{t("profile.cropLabel")}</label>
 
           <div className="crop-grid">
-            {Object.entries(cropMeta).map(([key, meta]) => (
+            {Object.entries(CROP_KEYS).map(([key, meta]) => (
               <div
                 key={key}
-                className={`crop-pill ${
-                  crop === key ? "selected" : ""
-                }`}
+                className={`crop-pill ${crop === key ? "selected" : ""}`}
                 onClick={() => setCrop(key)}
               >
-                {meta.icon} {t(`crop.${key}`)}
+                {meta.icon} {t(meta.labelKey)}
               </div>
             ))}
           </div>

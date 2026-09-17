@@ -6,9 +6,7 @@ export default function ComingSoonPage({ title, description }) {
   return (
     <div className="coming-soon">
       <h2>{title}</h2>
-      <p>
-        {description || t("comingSoon.defaultDesc")}
-      </p>
+      <p>{description || t("comingSoon.defaultDesc")}</p>
     </div>
   );
 }

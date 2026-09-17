@@ -18,15 +18,12 @@ const mandiIcon = L.divIcon({
   iconAnchor: [7, 7],
 });
 
+// Small helper so we can imperatively fly the map when a mandi row is clicked
 function FlyToController({ target }) {
   const map = useMap();
-
   useEffect(() => {
-    if (target) {
-      map.flyTo([target.lat, target.lon], 11, { duration: 0.6 });
-    }
+    if (target) map.flyTo([target.lat, target.lon], 11, { duration: 0.6 });
   }, [target, map]);
-
   return null;
 }
 
@@ -37,7 +34,6 @@ export default function MapView({ mandis, farmerLocation, selected }) {
     <div className="panel">
       <div className="panel-head">
         <h2>{t("map.title")}</h2>
-
         <span className="count">
           {t("map.subtitle", { count: mandis.length })}
         </span>
@@ -50,7 +46,7 @@ export default function MapView({ mandis, farmerLocation, selected }) {
         style={{ height: "460px", width: "100%" }}
       >
         <TileLayer
-          attribution="&copy; OpenStreetMap contributors"
+          attribution='&copy; OpenStreetMap contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
@@ -66,18 +62,12 @@ export default function MapView({ mandis, farmerLocation, selected }) {
         </Marker>
 
         {mandis.map((m) => (
-          <Marker
-            key={m.name}
-            position={[m.lat, m.lon]}
-            icon={mandiIcon}
-          >
+          <Marker key={m.name} position={[m.lat, m.lon]} icon={mandiIcon}>
             <Popup>
               <b>{m.name}</b>
+              <br />₹{m.price.toLocaleString("en-IN")}/quintal
               <br />
-              ₹{m.price.toLocaleString("en-IN")}
-              {t("common.perQuintal")}
-              <br />
-              {t("common.arrivalPerDay", { qty: m.arrival })}
+              Arrival: {m.arrival}
             </Popup>
           </Marker>
         ))}

@@ -2,14 +2,15 @@ import { NavLink } from "react-router-dom";
 import { useLanguage } from "../i18n/LanguageContext";
 
 const TABS = [
-   { path: "mandi-bhaav", key: "tabs.mandiBhaav" },
-  { path: "lot", key: "tabs.lot" },
-  { path: "offers", key: "tabs.offers" },
-  { path: "transactions", key: "tabs.transactions" },
+  { path: "mandi-bhaav", labelKey: "tabs.mandiBhaav" },
+  { path: "lot", labelKey: "tabs.lot" },
+  { path: "offers", labelKey: "tabs.offers" },
+  { path: "transactions", labelKey: "tabs.transactions" },
 ];
 
 export default function TabsNav() {
-   const { t } = useLanguage();
+  const { t } = useLanguage();
+
   return (
     <nav className="tabs">
       {TABS.map((tab) => (
@@ -18,7 +19,7 @@ export default function TabsNav() {
           to={tab.path}
           className={({ isActive }) => (isActive ? "active" : "")}
         >
-          {t(tab.key)}
+          {t(tab.labelKey)}
         </NavLink>
       ))}
     </nav>

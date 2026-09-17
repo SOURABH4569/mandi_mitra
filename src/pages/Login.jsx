@@ -4,7 +4,6 @@ import { useLanguage } from "../i18n/LanguageContext";
 
 export default function Login({ setPhone }) {
   const { t } = useLanguage();
-
   const [value, setValue] = useState("");
   const navigate = useNavigate();
 
@@ -18,20 +17,15 @@ export default function Login({ setPhone }) {
       <div className="auth-card">
         <div className="brand-mark">
           <span className="dot" />
-          <span className="brand-name">Kisan Mandi Sahayak</span>
+          <span className="brand-name">{t("app.name")}</span>
         </div>
 
         <h1>{t("login.heading")}</h1>
 
-        <p className="sub">
-          {t("login.subtitle")}
-        </p>
+        <p className="sub">{t("login.subtitle")}</p>
 
         <div className="field">
-          <label htmlFor="phone">
-            {t("login.mobileLabel")}
-          </label>
-
+          <label htmlFor="phone">{t("login.mobileLabel")}</label>
           <input
             id="phone"
             type="tel"
@@ -48,9 +42,7 @@ export default function Login({ setPhone }) {
 
         <p className="hint">
           {t("login.newAccount")}{" "}
-          <button onClick={handleContinue}>
-            {t("login.startHere")}
-          </button>
+          <button onClick={handleContinue}>{t("login.startHere")}</button>
         </p>
       </div>
     </div>

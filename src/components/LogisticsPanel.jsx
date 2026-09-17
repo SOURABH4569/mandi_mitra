@@ -7,7 +7,6 @@ export default function LogisticsPanel({ options }) {
     <div className="panel">
       <div className="panel-head">
         <h2>{t("logistics.title")}</h2>
-
         <span className="count">
           {t("logistics.subtitle", { count: options.length })}
         </span>
@@ -26,7 +25,6 @@ export default function LogisticsPanel({ options }) {
 
             <div className="logistics-main">
               <div className="logistics-name">{o.name}</div>
-
               <div className="logistics-type">{o.type}</div>
 
               <div className="logistics-details">

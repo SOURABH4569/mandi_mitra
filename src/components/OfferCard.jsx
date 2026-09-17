@@ -3,7 +3,6 @@ import { useLanguage } from "../i18n/LanguageContext";
 
 export default function OfferCard({ offer, onRespond }) {
   const { t } = useLanguage();
-
   const [showCounter, setShowCounter] = useState(false);
   const [counterValue, setCounterValue] = useState("");
 
@@ -14,11 +13,8 @@ export default function OfferCard({ offer, onRespond }) {
       <div className="offer-top">
         <span className="offer-buyer">
           {offer.buyerName}{" "}
-          {offer.buyerVerified && (
-            <span className="verified-tick">✓</span>
-          )}
+          {offer.buyerVerified && <span className="verified-tick">✓</span>}
         </span>
-
         <span className="offer-trust">
           {offer.buyerTrustScore}
           {t("offer.trustSuffix")}
@@ -26,15 +22,12 @@ export default function OfferCard({ offer, onRespond }) {
       </div>
 
       <div className="offer-price">
-        ₹{offer.pricePerQuintal.toLocaleString("en-IN")}
-        {t("common.perQuintal")}
+        ₹{offer.pricePerQuintal.toLocaleString("en-IN")}/quintal
       </div>
 
       {offer.status === "countered" && (
         <div className="offer-counter-note">
-          {t("offer.counterNote", {
-            price: offer.counterPrice,
-          })}
+          {t("offer.counterNote", { price: offer.counterPrice })}
         </div>
       )}
 
@@ -90,7 +83,6 @@ export default function OfferCard({ offer, onRespond }) {
               if (counterValue) {
                 onRespond(offer.id, "counter", counterValue);
               }
-
               setShowCounter(false);
               setCounterValue("");
             }}

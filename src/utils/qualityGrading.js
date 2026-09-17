@@ -20,33 +20,58 @@ export async function analyzeImageQuality(imageElement) {
   const n = size * size;
 
   for (let i = 0; i < data.length; i += 4) {
-    const r = data[i], g = data[i + 1], b = data[i + 2];
+    const r = data[i],
+      g = data[i + 1],
+      b = data[i + 2];
+
     const brightness = (r + g + b) / 3;
     sum += brightness;
     sumSq += brightness * brightness;
-    const max = Math.max(r, g, b), min = Math.min(r, g, b);
+
+    const max = Math.max(r, g, b);
+    const min = Math.min(r, g, b);
+
     satSum += max === 0 ? 0 : (max - min) / max;
   }
 
   const avgBrightness = sum / n;
   const variance = sumSq / n - avgBrightness * avgBrightness;
-  const uniformity = Math.max(0, 100 - Math.sqrt(variance)); // higher = more uniform surface
+  const uniformity = Math.max(0, 100 - Math.sqrt(variance));
   const avgSaturation = (satSum / n) * 100;
 
   // Simple scoring: reward uniform surface + healthy brightness range + reasonable saturation.
-  const brightnessScore = avgBrightness > 60 && avgBrightness < 220 ? 100 : 60;
-  const score = Math.round(uniformity * 0.5 + brightnessScore * 0.3 + Math.min(avgSaturation, 100) * 0.2);
+  const brightnessScore =
+    avgBrightness > 60 && avgBrightness < 220 ? 100 : 60;
+
+  const score = Math.round(
+    uniformity * 0.5 +
+      brightnessScore * 0.3 +
+      Math.min(avgSaturation, 100) * 0.2
+  );
 
   let grade, reasons;
+
   if (score >= 75) {
     grade = "A";
-    reasons = ["Surface uniform dikh raha hai", "Rang healthy range mein hai", "Koi bada daag/defect nahi dikha"];
+    reasons = [
+      "quality.reasonA1",
+      "quality.reasonA2",
+      "quality.reasonA3",
+    ];
   } else if (score >= 55) {
     grade = "B";
-    reasons = ["Surface mein halka farak hai", "Kuch hisson mein rang asaman hai", "Overall theek-thaak quality"];
+    reasons = [
+      "quality.reasonB1",
+      "quality.reasonB2",
+      "quality.reasonB3",
+    ];
   } else {
     grade = "C";
-    reasons = ["Surface mein zyada variation hai", "Roshni/angle sahi nahi tha ya upaj mein daag ho sakte hain", "Behtar photo (saaf background, achhi roshni) dobara try karein"];
+    reasons = [
+      "quality.reasonC1",
+      "quality.reasonC2",
+      "quality.reasonC3",
+    ];
   }
 
   return { grade, score, reasons };

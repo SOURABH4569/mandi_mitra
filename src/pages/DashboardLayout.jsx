@@ -1,10 +1,10 @@
 import { Outlet } from "react-router-dom";
 import Header from "../components/Header";
 import TabsNav from "../components/TabsNav";
-import { cropMeta } from "../data/mandis";
+import { CROP_KEYS } from "../data/cropMeta";
 
 export default function DashboardLayout({ farmer }) {
-  const cropIcon = cropMeta[farmer?.crop || "wheat"].icon;
+  const cropIcon = CROP_KEYS[farmer?.crop || "wheat"].icon;
 
   return (
     <div>

@@ -4,7 +4,6 @@ import { useLanguage } from "../i18n/LanguageContext";
 
 export default function PhotoUploader({ onGraded }) {
   const { t } = useLanguage();
-
   const [preview, setPreview] = useState(null);
   const [analyzing, setAnalyzing] = useState(false);
   const fileInputRef = useRef(null);
@@ -35,12 +34,8 @@ export default function PhotoUploader({ onGraded }) {
         ) : (
           <div className="photo-drop-placeholder">
             <span className="photo-icon">📷</span>
-
             <span>{t("photo.uploadPrompt")}</span>
-
-            <span className="photo-hint">
-              {t("photo.hint")}
-            </span>
+            <span className="photo-hint">{t("photo.hint")}</span>
           </div>
         )}
 

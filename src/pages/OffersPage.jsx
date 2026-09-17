@@ -1,40 +1,31 @@
 import { useEffect, useState } from "react";
-import {
-  getLots,
-  getOffersForLot,
-  respondToOffer,
-} from "../services/backendApi";
+import { getLots, getOffersForLot, respondToOffer } from "../services/backendApi";
 import OfferCard from "../components/OfferCard";
-import { cropMeta } from "../data/mandis";
+import { CROP_KEYS } from "../data/cropMeta";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function OffersPage() {
   const { t } = useLanguage();
-
   const [lotsWithOffers, setLotsWithOffers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [backendOk, setBackendOk] = useState(true);
 
   const loadAll = async () => {
     setLoading(true);
-
     try {
       const lots = await getLots();
-
       const withOffers = await Promise.all(
         lots.map(async (lot) => ({
           lot,
           offers: await getOffersForLot(lot.id),
         }))
       );
-
       setLotsWithOffers(withOffers);
       setBackendOk(true);
     } catch (e) {
       setBackendOk(false);
       setLotsWithOffers([]);
     }
-
     setLoading(false);
   };
 
@@ -52,24 +43,18 @@ export default function OffersPage() {
   };
 
   if (loading) {
-    return (
-      <div className="coming-soon">
-        {t("offers.loading")}
-      </div>
-    );
+    return <div className="coming-soon">{t("offers.loading")}</div>;
   }
 
   if (!backendOk) {
     return (
       <div className="coming-soon">
         <h2>{t("offers.backendOfflineTitle")}</h2>
-
         <p>
           {t("offers.backendOfflineDesc")}
           <br />
+          <code>cd kisan-mandi-backend && npm start</code>,{" "}
           {t("offers.backendOfflineHint")}
-          <br />
-          <code>cd kisan-mandi-backend && npm start</code>
         </p>
       </div>
     );
@@ -79,7 +64,6 @@ export default function OffersPage() {
     return (
       <div className="coming-soon">
         <h2>{t("offers.noLotsTitle")}</h2>
-
         <p>{t("offers.noLotsDesc")}</p>
       </div>
     );
@@ -91,22 +75,18 @@ export default function OffersPage() {
         <div className="panel lot-offers-group" key={lot.id}>
           <div className="panel-head">
             <h2>
-              {cropMeta[lot.crop]?.icon}{" "}
-              {t(`crop.${lot.crop}`)} · {lot.quantity}{" "}
-              {t("common.quintal")}
+              {CROP_KEYS[lot.crop]?.icon}{" "}
+              {CROP_KEYS[lot.crop] ? t(CROP_KEYS[lot.crop].labelKey) : lot.crop}{" "}
+              · {lot.quantity} quintal
             </h2>
-
             <span className="count">
-              {t("common.gradeLabel", { grade: lot.grade })} ·{" "}
-              {t("common.statusLabel", { status: lot.status })}
+              Grade {lot.grade} · {lot.status}
             </span>
           </div>
 
           <div className="offer-grid">
             {offers.length === 0 && (
-              <div className="lot-empty">
-                {t("offers.noOffersForLot")}
-              </div>
+              <div className="lot-empty">{t("offers.noOffersForLot")}</div>
             )}
 
             {offers.map((offer) => (

@@ -18,8 +18,9 @@ import { useLanguage } from "../i18n/LanguageContext";
 // loading, the map, the sorted mandi list, buyer demand, and logistics panels.
 // It is rendered inside DashboardLayout's <Outlet/> at /dashboard/mandi-bhaav.
 export default function MandiPricePage() {
-   const { t } = useLanguage();
   const { farmer } = useOutletContext();
+  const { t } = useLanguage();
+
   const [qty, setQty] = useState(20);
   const [selectedMandi, setSelectedMandi] = useState(null);
   const [mandis, setMandis] = useState(mockMandis);
@@ -31,7 +32,10 @@ export default function MandiPricePage() {
   useEffect(() => {
     let cancelled = false;
     setDataSource("loading");
-    fetchLiveMandiPrices({ commodity: cropLabel === "Gehun" ? "Wheat" : cropLabel })
+
+    fetchLiveMandiPrices({
+      commodity: cropLabel === "Gehun" ? "Wheat" : cropLabel,
+    })
       .then((liveData) => {
         if (cancelled) return;
         setMandis(liveData);
@@ -42,25 +46,61 @@ export default function MandiPricePage() {
         setMandis(mockMandis);
         setDataSource("mock");
       });
+
     return () => {
       cancelled = true;
     };
   }, [crop, cropLabel]);
 
-  const recommendation = useMemo(() => getRecommendation(mandis), [mandis]);
-  const buyers = useMemo(() => getBuyersForCrop(crop), [crop]);
-  const logisticsOptions = useMemo(() => getLogisticsForCrop(crop), [crop]);
+  const recommendation = useMemo(
+    () => getRecommendation(mandis),
+    [mandis]
+  );
+
+  const buyers = useMemo(
+    () => getBuyersForCrop(crop),
+    [crop]
+  );
+
+  const logisticsOptions = useMemo(
+    () => getLogisticsForCrop(crop),
+    [crop]
+  );
 
   const stats = useMemo(() => {
     if (!mandis.length) return [];
-    const withEcon = mandis.map((m) => computeEconomics(farmerLocation, m, qty));
-    const bestNet = Math.max(...withEcon.map((e) => e.netPricePerQuintal));
-    const avgTransport = withEcon.reduce((s, e) => s + e.transportCostPerQuintal, 0) / withEcon.length;
+
+    const withEcon = mandis.map((m) =>
+      computeEconomics(farmerLocation, m, qty)
+    );
+
+    const bestNet = Math.max(
+      ...withEcon.map((e) => e.netPricePerQuintal)
+    );
+
+    const avgTransport =
+      withEcon.reduce(
+        (s, e) => s + e.transportCostPerQuintal,
+        0
+      ) / withEcon.length;
+
     return [
-      { label: t("stats.bestNet"), value: `₹${bestNet.toFixed(0)}` },
-{ label: t("stats.trackedMandis"), value: mandis.length },
-{ label: t("stats.avgTransport"), value: `₹${avgTransport.toFixed(0)}/quintal` },
-{ label: t("stats.verifiedBuyers"), value: buyers.length },
+      {
+        labelKey: "stats.bestNet",
+        value: `₹${bestNet.toFixed(0)}`,
+      },
+      {
+        labelKey: "stats.trackedMandis",
+        value: mandis.length,
+      },
+      {
+        labelKey: "stats.avgTransport",
+        value: `₹${avgTransport.toFixed(0)}/quintal`,
+      },
+      {
+        labelKey: "stats.verifiedBuyers",
+        value: buyers.length,
+      },
     ];
   }, [mandis, qty, buyers]);
 
@@ -73,12 +113,27 @@ export default function MandiPricePage() {
       </div>
 
       <StatsBar stats={stats} />
-      <RecommendationBanner title={recommendation.title} text={recommendation.text} />
+
+      <RecommendationBanner
+        title={t(recommendation.titleKey)}
+        text={t(recommendation.textKey, recommendation.vars)}
+      />
+
       <QuantityBar qty={qty} onChange={setQty} />
 
       <div className="layout-grid">
-        <MapView mandis={mandis} farmerLocation={farmerLocation} selected={selectedMandi} />
-        <MandiList mandis={mandis} farmerLocation={farmerLocation} qty={qty} onSelect={setSelectedMandi} />
+        <MapView
+          mandis={mandis}
+          farmerLocation={farmerLocation}
+          selected={selectedMandi}
+        />
+
+        <MandiList
+          mandis={mandis}
+          farmerLocation={farmerLocation}
+          qty={qty}
+          onSelect={setSelectedMandi}
+        />
       </div>
 
       <div className="layout-grid" style={{ marginTop: 22 }}>

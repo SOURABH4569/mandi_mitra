@@ -1,3 +1,5 @@
+import { useLanguage } from "../i18n/LanguageContext";
+
 const TONE_COLORS = {
   good: "var(--forest)",
   "neutral-good": "#6E8F5C",
@@ -6,10 +8,12 @@ const TONE_COLORS = {
 };
 
 export default function DemandBadge({ status }) {
+  const { t } = useLanguage();
+
   return (
     <span className="demand-badge" style={{ borderColor: TONE_COLORS[status.tone] }}>
       <span className="demand-dot" style={{ background: TONE_COLORS[status.tone] }} />
-      {status.label}
+      {t(status.labelKey)}
     </span>
   );
 }

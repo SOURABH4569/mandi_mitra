@@ -3,14 +3,13 @@ import { useOutletContext } from "react-router-dom";
 import PhotoUploader from "../components/PhotoUploader";
 import QualityGradeResult from "../components/QualityGradeResult";
 import LotCard from "../components/LotCard";
-import { cropMeta } from "../data/mandis";
+import { CROP_KEYS } from "../data/cropMeta";
 import { createLot, getLots } from "../services/backendApi";
 import { useLanguage } from "../i18n/LanguageContext";
 
 export default function LotPage() {
-  const { farmer } = useOutletContext();
   const { t } = useLanguage();
-
+  const { farmer } = useOutletContext();
   const [crop, setCrop] = useState(farmer?.crop || "wheat");
   const [quantity, setQuantity] = useState("");
   const [harvestDate, setHarvestDate] = useState("");
@@ -64,13 +63,11 @@ export default function LotPage() {
       setBackendOk(true);
     } catch (e) {
       setBackendOk(false);
-
       const localLot = {
         id: "local_" + Date.now(),
         ...payload,
         status: t("lot.localModeStatus"),
       };
-
       setLots((prev) => [localLot, ...prev]);
     }
 
@@ -87,9 +84,8 @@ export default function LotPage() {
         <div className="data-source-note mock">
           {t("lot.backendOfflineNote")}
           <br />
+          <code>cd kisan-mandi-backend && npm start</code>{" "}
           {t("lot.backendOfflineHint")}
-          <br />
-          <code>cd kisan-mandi-backend && npm start</code>
         </div>
       )}
 
@@ -104,25 +100,20 @@ export default function LotPage() {
               <label>{t("lot.cropLabel")}</label>
 
               <div className="crop-grid">
-                {Object.entries(cropMeta).map(([key, meta]) => (
+                {Object.entries(CROP_KEYS).map(([key, meta]) => (
                   <div
                     key={key}
-                    className={`crop-pill ${
-                      crop === key ? "selected" : ""
-                    }`}
+                    className={`crop-pill ${crop === key ? "selected" : ""}`}
                     onClick={() => setCrop(key)}
                   >
-                    {meta.icon} {t(`crop.${key}`)}
+                    {meta.icon} {t(meta.labelKey)}
                   </div>
                 ))}
               </div>
             </div>
 
             <div className="field">
-              <label htmlFor="quantity">
-                {t("lot.quantityLabel")}
-              </label>
-
+              <label htmlFor="quantity">{t("lot.quantityLabel")}</label>
               <input
                 id="quantity"
                 type="number"
@@ -137,7 +128,6 @@ export default function LotPage() {
               <label htmlFor="harvestDate">
                 {t("lot.harvestDateLabel")}
               </label>
-
               <input
                 id="harvestDate"
                 type="date"
@@ -148,9 +138,7 @@ export default function LotPage() {
 
             <div className="field">
               <label>{t("lot.photoLabel")}</label>
-
               <PhotoUploader onGraded={handleGraded} />
-
               <QualityGradeResult result={gradeResult} />
             </div>
 
@@ -161,9 +149,7 @@ export default function LotPage() {
               onClick={handleSubmit}
               disabled={submitting}
             >
-              {submitting
-                ? t("lot.submitting")
-                : t("lot.submitButton")}
+              {submitting ? t("lot.submitting") : t("lot.submitButton")}
             </button>
           </div>
         </div>
@@ -171,7 +157,6 @@ export default function LotPage() {
         <div className="panel lot-list-panel">
           <div className="panel-head">
             <h2>{t("lot.yourLotsTitle")}</h2>
-
             <span className="count">
               {t("lot.lotCount", { count: lots.length })}
             </span>
@@ -179,9 +164,7 @@ export default function LotPage() {
 
           <div className="lot-list">
             {lots.length === 0 && (
-              <div className="lot-empty">
-                {t("lot.noLots")}
-              </div>
+              <div className="lot-empty">{t("lot.noLots")}</div>
             )}
 
             {lots.map((lot) => (

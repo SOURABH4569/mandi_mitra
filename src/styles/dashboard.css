@@ -414,3 +414,15 @@
 
 .offer-counter-form{ display: flex; gap: 6px; margin-top: 6px; flex-wrap: wrap; }
 .offer-counter-form input{ flex: 1; min-width: 100px; padding: 6px 8px; font-size: 12.5px; }
+
+
+.lang-switcher{
+  background: rgba(255,255,255,0.12);
+  color: #F5F2E8;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 13px;
+  cursor: pointer;
+}
+.lang-switcher option{ color: #2F4B3C; }
