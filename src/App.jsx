@@ -15,23 +15,66 @@ import "./styles/dashboard.css";
 
 export default function App() {
   const { t } = useLanguage();
+
   const [phone, setPhone] = useState("");
   const [farmer, setFarmer] = useState(null);
 
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login setPhone={setPhone} />} />
-        <Route path="/otp" element={<Otp phone={phone} />} />
-        <Route path="/profile" element={<Profile setFarmer={setFarmer} />} />
+        {/* Role selection */}
+        <Route
+          path="/"
+          element={<Login />}
+        />
 
-        {/* Nested routes: DashboardLayout renders Header+Tabs once, child route
-            fills the <Outlet/>. Adding a new feature = one new <Route> line here. */}
-        <Route path="/dashboard" element={<DashboardLayout farmer={farmer} />}>
-          <Route index element={<Navigate to="mandi-bhaav" replace />} />
-          <Route path="mandi-bhaav" element={<MandiPricePage />} />
-          <Route path="lot" element={<LotPage />} />
-          <Route path="offers" element={<OffersPage />} />
+        {/* Farmer details */}
+        <Route
+          path="/profile"
+          element={
+            <Profile
+              setFarmer={setFarmer}
+              setPhone={setPhone}
+            />
+          }
+        />
+
+        {/* OTP verification */}
+        <Route
+          path="/otp"
+          element={
+            <Otp
+              phone={phone}
+              farmer={farmer}
+            />
+          }
+        />
+
+        {/* Dashboard */}
+        <Route
+          path="/dashboard"
+          element={<DashboardLayout farmer={farmer} />}
+        >
+          <Route
+            index
+            element={<Navigate to="mandi-bhaav" replace />}
+          />
+
+          <Route
+            path="mandi-bhaav"
+            element={<MandiPricePage />}
+          />
+
+          <Route
+            path="lot"
+            element={<LotPage />}
+          />
+
+          <Route
+            path="offers"
+            element={<OffersPage />}
+          />
+
           <Route
             path="transactions"
             element={

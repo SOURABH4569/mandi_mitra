@@ -1,48 +1,89 @@
-import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../i18n/LanguageContext";
+import farmerHero from "../assets/farmer-hero.png";
 
-export default function Login({ setPhone }) {
+const roles = [
+  {
+    id: "farmer",
+    icon: "👨‍🌾",
+    titleKey: "role.farmer",
+    descKey: "role.farmerDesc",
+  },
+  {
+    id: "buyer",
+    icon: "🛒",
+    titleKey: "role.buyer",
+    descKey: "role.buyerDesc",
+  },
+  {
+    id: "admin",
+    icon: "🛠️",
+    titleKey: "role.admin",
+    descKey: "role.adminDesc",
+  },
+];
+
+export default function Login() {
   const { t } = useLanguage();
-  const [value, setValue] = useState("");
   const navigate = useNavigate();
 
-  const handleContinue = () => {
-    setPhone(value);
-    navigate("/otp");
+  const handleRoleSelect = (role) => {
+    if (role === "farmer") {
+      navigate("/profile");
+      return;
+    }
+
+    // Buyer and Admin flow will be added next.
+    // For now they stay on the same screen.
   };
 
   return (
-    <div className="auth-screen">
-      <div className="auth-card">
+    <div className="auth-screen role-screen">
+      <div className="role-card">
         <div className="brand-mark">
           <span className="dot" />
           <span className="brand-name">{t("app.name")}</span>
         </div>
 
-        <h1>{t("login.heading")}</h1>
+        <div className="role-intro">
+          <img
+              src={farmerHero}
+              alt="Farmer"
+              className="hero-image"
+/>
 
-        <p className="sub">{t("login.subtitle")}</p>
+          <h1>{t("role.heading")}</h1>
 
-        <div className="field">
-          <label htmlFor="phone">{t("login.mobileLabel")}</label>
-          <input
-            id="phone"
-            type="tel"
-            placeholder="98765 43210"
-            maxLength={10}
-            value={value}
-            onChange={(e) => setValue(e.target.value)}
-          />
+          <p className="sub">{t("role.subtitle")}</p>
         </div>
 
-        <button className="btn" onClick={handleContinue}>
-          {t("login.otpButton")}
-        </button>
+        <div className="role-list">
+          {roles.map((role) => (
+            <button
+              key={role.id}
+              className={`role-option role-${role.id}`}
+              onClick={() => handleRoleSelect(role.id)}
+              type="button"
+            >
+              <span className="role-icon">{role.icon}</span>
 
-        <p className="hint">
-          {t("login.newAccount")}{" "}
-          <button onClick={handleContinue}>{t("login.startHere")}</button>
+              <span className="role-content">
+                <span className="role-title">
+                  {t(role.titleKey)}
+                </span>
+
+                <span className="role-description">
+                  {t(role.descKey)}
+                </span>
+              </span>
+
+              <span className="role-arrow">→</span>
+            </button>
+          ))}
+        </div>
+
+        <p className="role-footer">
+          {t("role.footer")}
         </p>
       </div>
     </div>

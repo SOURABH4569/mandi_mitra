@@ -426,3 +426,275 @@
   cursor: pointer;
 }
 .lang-switcher option{ color: #2F4B3C; }
+
+
+/* =========================================================
+   Dashboard UI Polish
+   ========================================================= */
+
+.topbar{
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  min-height: 68px;
+  box-shadow: 0 2px 12px rgba(34,55,41,0.08);
+}
+
+.brand-mark{
+  min-width: 0;
+}
+
+.topbar-right{
+  flex-wrap: wrap;
+}
+
+.farmer-chip{
+  max-width: 260px;
+  transition: 0.2s ease;
+}
+
+.farmer-chip:hover{
+  background: rgba(255,255,255,0.16);
+}
+
+/* Tabs */
+.tabs{
+  position: sticky;
+  top: 68px;
+  z-index: 999;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar{
+  display: none;
+}
+
+.tabs a{
+  transition:
+    color 0.2s ease,
+    background 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.tabs a:hover{
+  color: #fff;
+  background: rgba(255,255,255,0.04);
+}
+
+/* Main content */
+.dash{
+  animation: dashboardFadeIn 0.35s ease;
+}
+
+@keyframes dashboardFadeIn{
+  from{
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to{
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Data source note */
+.data-source-note{
+  background: rgba(255,255,255,0.65);
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  padding: 9px 12px;
+}
+
+/* Stats */
+.stats-bar{
+  gap: 16px;
+}
+
+.stat-tile{
+  min-height: 92px;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 6px 18px rgba(34,55,41,0.07);
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.stat-tile:hover{
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(34,55,41,0.1);
+}
+
+.stat-value{
+  font-size: 26px;
+}
+
+/* Recommendation */
+.rec-banner{
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(34,55,41,0.05);
+}
+
+/* Quantity */
+.qty-bar{
+  border-radius: 14px;
+  box-shadow: 0 4px 14px rgba(34,55,41,0.04);
+}
+
+.qty-bar input{
+  border-radius: 9px;
+  border: 1px solid var(--line);
+}
+
+/* Panels */
+.panel{
+  border-radius: 14px;
+  box-shadow: 0 5px 18px rgba(34,55,41,0.06);
+}
+
+.panel-head{
+  background: rgba(250,248,242,0.6);
+}
+
+/* Mandi rows */
+.mandi-row{
+  transition:
+    background 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mandi-row:hover{
+  transform: translateX(2px);
+}
+
+.mandi-row.best{
+  border-left: 4px solid var(--wheat);
+}
+
+.mandi-row.open{
+  background: #FCFBF7;
+}
+
+.badge{
+  border-radius: 999px;
+}
+
+.demand-badge{
+  background: rgba(255,255,255,0.7);
+}
+
+/* Buyer / logistics */
+.buyer-row,
+.logistics-row{
+  transition: background 0.2s ease;
+}
+
+.buyer-row:hover,
+.logistics-row:hover{
+  background: #FBFAF6;
+}
+
+.buyer-avatar{
+  border: 2px solid rgba(47,75,60,0.08);
+}
+
+/* Mobile */
+@media (max-width: 700px){
+
+  .topbar{
+    padding: 12px 16px;
+    top: 0;
+  }
+
+  .topbar-right{
+    width: 100%;
+    justify-content: space-between;
+    gap: 8px;
+  }
+
+  .farmer-chip{
+    max-width: calc(100vw - 125px);
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .tabs{
+    top: 110px;
+    padding: 0 10px;
+  }
+
+  .tabs a{
+    padding: 11px 13px;
+    font-size: 13px;
+  }
+
+  .dash{
+    padding: 16px 14px 40px;
+  }
+
+  .stats-bar{
+    gap: 10px;
+    margin-bottom: 18px;
+  }
+
+  .stat-tile{
+    min-height: 82px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  .stat-value{
+    font-size: 21px;
+  }
+
+  .stat-label{
+    font-size: 11px;
+  }
+
+  .rec-banner{
+    padding: 14px;
+    margin-bottom: 18px;
+  }
+
+  .qty-bar{
+    padding: 12px 14px;
+    gap: 10px;
+  }
+
+  .qty-bar .divider{
+    display: none;
+  }
+
+  .qty-bar .assump{
+    width: 100%;
+    line-height: 1.45;
+  }
+
+  .panel{
+    border-radius: 12px;
+  }
+
+  .panel-head{
+    padding: 14px 15px;
+    gap: 8px;
+  }
+
+  .panel-head h2{
+    font-size: 16px;
+  }
+
+  .mandi-row{
+    padding: 14px 15px;
+  }
+
+  .mandi-figs{
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 12px;
+  }
+
+  .buyer-row,
+  .logistics-row{
+    padding: 14px 15px;
+  }
+}

@@ -9,7 +9,7 @@ export const LANGUAGES = [
 export const DEFAULT_LANG = "hi";
 
 export const translations = {
-  "app.name": { hi: "किसान मंडी सहायक", en: "Kisan Mandi Sahayak123", mr: "किसान मंडी" },
+  "app.name": { hi: "किसान मंडी सहायक", en: "Kisan Mandi Sahayak", mr: "किसान मंडी" },
 
   // Login
   "login.heading": { hi: "अपनी उपज का सही दाम, सही मंडी में", en: "The right price for your produce, in the right mandi", mr: "तुमच्या शेतमालाचा योग्य भाव, योग्य बाजारात" },
@@ -174,6 +174,62 @@ export const translations = {
   "quality.reasonC1": { hi: "सतह में ज़्यादा बदलाव है", en: "High variation on the surface", mr: "पृष्ठभागावर जास्त फरक आहे" },
   "quality.reasonC2": { hi: "रोशनी/एंगल सही नहीं था या उपज में दाग हो सकते हैं", en: "Lighting/angle wasn't ideal, or produce may have spots", mr: "प्रकाश/कोन योग्य नव्हता किंवा मालावर डाग असू शकतात" },
   "quality.reasonC3": { hi: "बेहतर फोटो (साफ बैकग्राउंड, अच्छी रोशनी) दोबारा लें", en: "Try a better photo (clean background, good light) again", mr: "अधिक चांगला फोटो (स्वच्छ पार्श्वभूमी, चांगला प्रकाश) पुन्हा घ्या" },
+
+    // Role selection
+  "role.heading": {
+    hi: "आप कौन हैं?",
+    en: "Who are you?",
+    mr: "तुम्ही कोण आहात?"
+  },
+
+  "role.subtitle": {
+    hi: "अपनी भूमिका चुनें और आगे बढ़ें",
+    en: "Choose your role to continue",
+    mr: "तुमची भूमिका निवडा आणि पुढे जा"
+  },
+
+  "role.farmer": {
+    hi: "किसान",
+    en: "Farmer",
+    mr: "शेतकरी"
+  },
+
+  "role.farmerDesc": {
+    hi: "अपनी उपज का सही भाव पाएं",
+    en: "Find the right price for your produce",
+    mr: "तुमच्या शेतमालाचा योग्य भाव मिळवा"
+  },
+
+  "role.buyer": {
+    hi: "खरीदार",
+    en: "Buyer",
+    mr: "खरेदीदार"
+  },
+
+  "role.buyerDesc": {
+    hi: "किसानों से उपज खरीदें",
+    en: "Buy produce from farmers",
+    mr: "शेतकऱ्यांकडून शेतमाल खरेदी करा"
+  },
+
+  "role.admin": {
+    hi: "एडमिन",
+    en: "Admin",
+    mr: "अ‍ॅडमिन"
+  },
+
+  "role.adminDesc": {
+    hi: "प्लेटफॉर्म को मैनेज करें",
+    en: "Manage the platform",
+    mr: "प्लॅटफॉर्म व्यवस्थापित करा"
+  },
+
+  "role.footer": {
+    hi: "किसान मंडी सहायक — सही भाव, सही मंडी",
+    en: "Kisan Mandi Sahayak — Right price, right mandi",
+    mr: "किसान मंडी सहायक — योग्य भाव, योग्य बाजार"
+  },
+
 
   // Crops
   "crop.wheat": { hi: "गेहूं", en: "Wheat", mr: "गहू" },
