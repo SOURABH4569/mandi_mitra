@@ -698,3 +698,496 @@
     padding: 14px 15px;
   }
 }
+
+/* =========================================================
+   LOT PAGE UI POLISH
+   ========================================================= */
+
+.lot-page{
+  display:grid;
+  grid-template-columns:minmax(0, 1.05fr) minmax(0, 0.95fr);
+  gap:22px;
+  align-items:start;
+}
+
+.lot-form-panel,
+.lot-list-panel{
+  box-shadow:0 6px 20px rgba(34,55,41,0.06);
+}
+
+/* Panel heading helper text */
+.panel-head > div{
+  min-width:0;
+}
+
+.panel-subtext{
+  margin-top:4px;
+  font-size:12px;
+  color:var(--ink-soft);
+}
+
+/* Step indicator */
+.lot-steps{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:8px;
+  padding:16px 20px 0;
+}
+
+.lot-step{
+  display:flex;
+  align-items:center;
+  gap:7px;
+  font-size:11px;
+  color:var(--ink-soft);
+  min-width:0;
+}
+
+.lot-step-number{
+  width:25px;
+  height:25px;
+  border-radius:50%;
+  border:1px solid var(--line);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+  font-size:11px;
+  font-weight:700;
+  background:var(--paper);
+}
+
+.lot-step.active .lot-step-number{
+  background:var(--forest);
+  border-color:var(--forest);
+  color:#fff;
+}
+
+.lot-step.active{
+  color:var(--forest-dark);
+  font-weight:600;
+}
+
+/* Form area */
+.lot-form-body{
+  padding:20px;
+}
+
+.lot-form-body .field{
+  margin-bottom:18px;
+}
+
+.lot-form-body .field:last-of-type{
+  margin-bottom:16px;
+}
+
+/* Crop selection */
+.lot-form-body .crop-grid{
+  margin-top:8px;
+}
+
+.lot-form-body .crop-pill{
+  transition:
+    border-color .2s ease,
+    background .2s ease,
+    transform .2s ease;
+}
+
+.lot-form-body .crop-pill:hover{
+  transform:translateY(-1px);
+}
+
+/* Inputs */
+.lot-form-body input{
+  width:100%;
+  margin-top:7px;
+  border-radius:10px;
+  min-height:44px;
+  box-sizing:border-box;
+}
+
+/* Error */
+.lot-form-body .form-error{
+  padding:10px 12px;
+  background:rgba(185,92,58,0.08);
+  border:1px solid rgba(185,92,58,0.22);
+  border-radius:9px;
+  margin-bottom:14px;
+}
+
+/* Submit button */
+.lot-form-body .btn{
+  min-height:46px;
+  border-radius:10px;
+  font-weight:700;
+}
+
+/* Existing lot count */
+.lot-count-badge{
+  min-width:32px;
+  height:32px;
+  padding:0 10px;
+  border-radius:50%;
+  background:var(--forest);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:12px;
+  font-weight:700;
+}
+
+/* Empty lots state */
+.lot-empty{
+  min-height:250px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:30px 20px;
+  text-align:center;
+  color:var(--ink-soft);
+}
+
+.lot-empty-icon{
+  width:64px;
+  height:64px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--sage);
+  font-size:30px;
+}
+
+/* Better lot cards */
+.lot-card{
+  transition:background .2s ease;
+}
+
+.lot-card:hover{
+  background:#FBFAF6;
+}
+
+/* Better photo uploader */
+.photo-drop{
+  border-radius:12px;
+  min-height:190px;
+  transition:
+    border-color .2s ease,
+    background .2s ease;
+}
+
+.photo-drop:hover{
+  border-color:var(--forest);
+  background:#FCFBF7;
+}
+
+.photo-drop.has-preview img{
+  border-radius:10px;
+}
+
+/* Grade result */
+.grade-result{
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(34,55,41,0.04);
+}
+
+/* Mobile */
+@media (max-width:860px){
+
+  .lot-page{
+    grid-template-columns:1fr;
+  }
+}
+
+@media (max-width:700px){
+
+  .lot-steps{
+    grid-template-columns:repeat(2,1fr);
+    gap:12px 8px;
+    padding:14px 16px 0;
+  }
+
+  .lot-step{
+    font-size:10.5px;
+  }
+
+  .lot-step-number{
+    width:23px;
+    height:23px;
+  }
+
+  .lot-form-body{
+    padding:16px;
+  }
+
+  .lot-list{
+    max-height:none;
+  }
+
+  .lot-card{
+    padding:14px 15px;
+  }
+
+  .lot-thumb{
+    width:58px;
+    height:58px;
+  }
+}
+
+/* =========================================================
+   OFFERS PAGE UI POLISH
+   ========================================================= */
+
+.offers-page{
+  display:flex;
+  flex-direction:column;
+  gap:20px;
+}
+
+.lot-offers-group{
+  overflow:hidden;
+}
+
+.lot-offers-group .panel-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.lot-offers-group .panel-head h2{
+  margin:0;
+  font-size:17px;
+}
+
+.lot-offers-group .count{
+  white-space:nowrap;
+}
+
+/* Offer cards */
+.offer-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fill, minmax(250px, 1fr));
+  gap:16px;
+  padding:18px 20px 20px;
+}
+
+.offer-card{
+  position:relative;
+  border:1px solid var(--line);
+  border-radius:14px;
+  padding:17px;
+  background:#fff;
+  box-shadow:0 4px 14px rgba(34,55,41,0.05);
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+}
+
+.offer-card:hover{
+  transform:translateY(-2px);
+  box-shadow:0 9px 22px rgba(34,55,41,0.09);
+}
+
+/* Status */
+.offer-card.status-accepted{
+  border-color:rgba(47,75,60,0.35);
+  background:linear-gradient(
+    180deg,
+    rgba(47,75,60,0.055),
+    #fff
+  );
+}
+
+.offer-card.status-rejected{
+  opacity:.7;
+  background:#FAF8F5;
+}
+
+.offer-card.status-countered{
+  border-color:rgba(217,169,76,0.55);
+}
+
+/* Top row */
+.offer-top{
+  align-items:center;
+  margin-bottom:12px;
+}
+
+.offer-buyer{
+  font-size:14px;
+  font-weight:700;
+}
+
+.offer-trust{
+  background:var(--paper);
+  padding:5px 8px;
+  border-radius:999px;
+  font-size:10.5px;
+}
+
+/* Verified tick */
+.verified-tick{
+  display:inline-flex;
+  width:18px;
+  height:18px;
+  align-items:center;
+  justify-content:center;
+  border-radius:50%;
+  background:var(--forest);
+  color:#fff;
+  font-size:10px;
+  vertical-align:middle;
+}
+
+/* Price */
+.offer-price{
+  font-size:25px;
+  margin:4px 0 14px;
+  letter-spacing:-.2px;
+}
+
+/* Status messages */
+.offer-status-note{
+  padding:9px 10px;
+  border-radius:9px;
+  margin-bottom:12px;
+  background:var(--paper);
+}
+
+.offer-status-note.accepted{
+  color:var(--forest);
+  background:rgba(47,75,60,0.08);
+}
+
+.offer-status-note.rejected{
+  color:var(--clay);
+  background:rgba(185,92,58,0.08);
+}
+
+.offer-counter-note{
+  padding:9px 10px;
+  border-radius:9px;
+  background:rgba(217,169,76,0.12);
+  color:var(--ink-soft);
+  margin-bottom:12px;
+}
+
+/* Buttons */
+.offer-actions{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:8px;
+}
+
+.offer-actions .accept{
+  grid-column:span 2;
+}
+
+.btn.tiny{
+  min-height:38px;
+  border-radius:9px;
+  font-weight:700;
+}
+
+.btn.tiny.accept{
+  background:var(--forest);
+  color:#fff;
+}
+
+.btn.tiny.accept:hover{
+  background:var(--forest-dark);
+}
+
+.btn.tiny.secondary{
+  background:#fff;
+  border:1px solid var(--line);
+}
+
+.btn.tiny.secondary:hover{
+  border-color:var(--forest);
+  color:var(--forest);
+}
+
+.btn.tiny.reject{
+  background:#fff;
+  border:1px solid rgba(185,92,58,0.5);
+  color:var(--clay);
+}
+
+.btn.tiny.reject:hover{
+  background:rgba(185,92,58,0.06);
+}
+
+/* Counter form */
+.offer-counter-form{
+  padding:10px;
+  border-radius:10px;
+  background:var(--paper);
+  border:1px solid var(--line);
+}
+
+.offer-counter-form input{
+  min-height:38px;
+  border-radius:8px;
+  border:1px solid var(--line);
+  box-sizing:border-box;
+}
+
+.offer-counter-form .btn{
+  min-height:38px;
+}
+
+/* Empty state */
+.offer-grid .lot-empty{
+  min-height:150px;
+  border-radius:10px;
+  background:var(--paper);
+  border:1px dashed var(--line);
+}
+
+/* Mobile */
+@media (max-width:700px){
+
+  .lot-offers-group .panel-head{
+    align-items:flex-start;
+  }
+
+  .lot-offers-group .panel-head h2{
+    font-size:15px;
+  }
+
+  .offer-grid{
+    grid-template-columns:1fr;
+    padding:14px;
+  }
+
+  .offer-card{
+    padding:15px;
+  }
+
+  .offer-price{
+    font-size:23px;
+  }
+
+  .offer-actions{
+    grid-template-columns:1fr;
+  }
+
+  .offer-actions .accept{
+    grid-column:auto;
+  }
+
+  .offer-counter-form{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+  }
+
+  .offer-counter-form input{
+    grid-column:span 2;
+  }
+}

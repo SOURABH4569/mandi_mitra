@@ -23,19 +23,20 @@ const roles = [
   },
 ];
 
+
+
 export default function Login() {
   const { t } = useLanguage();
   const navigate = useNavigate();
 
   const handleRoleSelect = (role) => {
-    if (role === "farmer") {
-      navigate("/profile");
-      return;
-    }
+  if (role === "farmer") {
+    navigate("/profile");
+    return;
+  }
 
-    // Buyer and Admin flow will be added next.
-    // For now they stay on the same screen.
-  };
+  navigate(`/role-login/${role}`);
+};
 
   return (
     <div className="auth-screen role-screen">

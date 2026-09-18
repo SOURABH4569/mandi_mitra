@@ -26,6 +26,25 @@ export const translations = {
   "otp.verifyButton": { hi: "वेरीफाई करें", en: "Verify", mr: "सत्यापित करा" },
   "otp.back": { hi: "वापस जाएं", en: "Go back", mr: "मागे जा" },
 
+    "otp.resendIn": {
+    hi: "{seconds} सेकंड में फिर से भेजें",
+    en: "Resend in {seconds}s",
+    mr: "{seconds} सेकंदात पुन्हा पाठवा"
+  },
+
+  "otp.resend": {
+    hi: "OTP फिर से भेजें",
+    en: "Resend OTP",
+    mr: "OTP पुन्हा पाठवा"
+  },
+
+  "otp.demoNote": {
+    hi: "प्रोटोटाइप मोड: कोई भी 4 अंकों का OTP स्वीकार किया जाएगा।",
+    en: "Prototype mode: any 4-digit OTP is accepted.",
+    mr: "प्रोटोटाइप मोड: कोणताही 4 अंकी OTP स्वीकारला जाईल."
+  },
+
+
   // Profile
   "profile.title": { hi: "अपनी जानकारी भरें", en: "Fill Your Details", mr: "तुमची माहिती भरा" },
   "profile.subtitle": { hi: "इससे हम आपके लिए सही मंडी और सही दाम ढूंढ पाएंगे।", en: "This helps us find the right mandi and the right price for you.", mr: "यामुळे आम्ही तुमच्यासाठी योग्य बाजार आणि योग्य भाव शोधू शकू." },
@@ -34,6 +53,29 @@ export const translations = {
   "profile.cropLabel": { hi: "फसल चुनें", en: "Select Crop", mr: "पीक निवडा" },
   "profile.openDashboard": { hi: "डैशबोर्ड खोलें", en: "Open Dashboard", mr: "डॅशबोर्ड उघडा" },
   "profile.defaultName": { hi: "किसान भाई", en: "Farmer", mr: "शेतकरी मित्र" },
+
+    "profile.step": {
+    hi: "चरण 1 / 2",
+    en: "Step 1 of 2",
+    mr: "चरण 1 / 2"
+  },
+
+  "profile.otpHint": {
+    hi: "OTP इसी नंबर पर भेजा जाएगा",
+    en: "OTP will be sent to this number",
+    mr: "OTP या नंबरवर पाठवला जाईल"
+  },
+
+  "profile.security": {
+    hi: "🔒 आपका मोबाइल नंबर सिर्फ लॉगिन वेरिफिकेशन के लिए इस्तेमाल होगा।",
+    en: "🔒 Your mobile number is used only for login verification.",
+    mr: "🔒 तुमचा मोबाइल नंबर फक्त लॉगिन पडताळणीसाठी वापरला जाईल."
+  },
+  "profile.invalidPhone": {
+  hi: "कृपया 10 अंकों का सही मोबाइल नंबर डालें।",
+  en: "Please enter a valid 10-digit mobile number.",
+  mr: "कृपया 10 अंकी योग्य मोबाइल नंबर टाका."
+},
 
   // Tabs
   "tabs.mandiBhaav": { hi: "मंडी भाव", en: "Mandi Prices", mr: "बाजार भाव" },
@@ -228,6 +270,72 @@ export const translations = {
     hi: "किसान मंडी सहायक — सही भाव, सही मंडी",
     en: "Kisan Mandi Sahayak — Right price, right mandi",
     mr: "किसान मंडी सहायक — योग्य भाव, योग्य बाजार"
+  },
+
+    "role.buyerLogin": {
+    hi: "खरीदार लॉगिन",
+    en: "Buyer Login",
+    mr: "खरेदीदार लॉगिन"
+  },
+
+  "role.buyerLoginSubtitle": {
+    hi: "अपने मोबाइल नंबर से लॉगिन करें",
+    en: "Login using your mobile number",
+    mr: "तुमच्या मोबाइल नंबरने लॉगिन करा"
+  },
+
+  "role.adminLogin": {
+    hi: "एडमिन लॉगिन",
+    en: "Admin Login",
+    mr: "अ‍ॅडमिन लॉगिन"
+  },
+
+  "role.adminLoginSubtitle": {
+    hi: "प्लेटफॉर्म मैनेज करने के लिए लॉगिन करें",
+    en: "Login to manage the platform",
+    mr: "प्लॅटफॉर्म व्यवस्थापित करण्यासाठी लॉगिन करा"
+  },
+
+  "role.adminId": {
+    hi: "एडमिन आईडी",
+    en: "Admin ID",
+    mr: "अ‍ॅडमिन आयडी"
+  },
+
+  "role.adminPassword": {
+    hi: "पासवर्ड",
+    en: "Password",
+    mr: "पासवर्ड"
+  },
+
+  "role.adminLoginButton": {
+    hi: "लॉगिन करें",
+    en: "Login",
+    mr: "लॉगिन करा"
+  },
+
+  "role.adminFieldsRequired": {
+    hi: "कृपया एडमिन आईडी और पासवर्ड भरें।",
+    en: "Please enter admin ID and password.",
+    mr: "कृपया अ‍ॅडमिन आयडी आणि पासवर्ड भरा."
+  },
+
+  "role.switchRole": {
+    hi: "दूसरी भूमिका चुननी है?",
+    en: "Want to choose another role?",
+    mr: "दुसरी भूमिका निवडायची आहे?"
+  },
+
+  "role.backHome": {
+    hi: "भूमिका बदलें",
+    en: "Change role",
+    mr: "भूमिका बदला"
+  },
+
+  "role.invalid": {
+    hi: "अमान्य भूमिका",
+    en: "Invalid role",
+    mr: "अवैध भूमिका"
   },
 
 

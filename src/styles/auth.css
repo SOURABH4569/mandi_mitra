@@ -214,3 +214,652 @@ input:focus, select:focus{
   font-size:13px;
   color:#666;
 }
+
+/* =========================================================
+   FARMER PROFILE / ONBOARDING UI
+   ========================================================= */
+
+.farmer-profile-screen{
+  min-height:100vh;
+  padding:24px 16px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(217,169,76,0.10),
+      transparent 35%
+    ),
+    var(--bg);
+}
+
+.farmer-profile-card{
+  max-width:500px;
+  padding:28px 30px 22px;
+  border-radius:20px;
+  box-shadow:0 18px 45px rgba(34,55,41,0.09);
+  overflow:hidden;
+}
+
+/* Top row */
+.profile-top{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  margin-bottom:22px;
+}
+
+.profile-back{
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--forest-dark);
+  font-size:20px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.profile-back:hover{
+  background:var(--sage);
+  transform:translateX(-2px);
+}
+
+.profile-top .brand-mark{
+  margin:0;
+}
+
+/* Hero */
+.profile-hero{
+  text-align:center;
+  margin-bottom:24px;
+}
+
+.profile-avatar{
+  width:72px;
+  height:72px;
+  border-radius:50%;
+  margin:0 auto 12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:var(--sage);
+  font-size:36px;
+  box-shadow:0 6px 18px rgba(47,75,60,0.10);
+}
+
+.profile-step{
+  display:inline-flex;
+  align-items:center;
+  padding:5px 10px;
+  border-radius:999px;
+  background:rgba(47,75,60,0.08);
+  color:var(--forest);
+  font-size:11px;
+  font-weight:700;
+  margin-bottom:9px;
+}
+
+.profile-hero h1{
+  margin-bottom:7px;
+}
+
+.profile-hero .sub{
+  margin-bottom:0;
+  max-width:390px;
+  margin-left:auto;
+  margin-right:auto;
+}
+
+/* Form */
+.profile-form{
+  margin-top:8px;
+}
+
+.profile-form .field{
+  margin-bottom:17px;
+}
+
+.profile-form input{
+  min-height:46px;
+  border-radius:10px;
+  background:#fff;
+  box-sizing:border-box;
+}
+
+.profile-form input:focus{
+  outline:2px solid rgba(47,75,60,0.20);
+  outline-offset:1px;
+  border-color:var(--forest);
+}
+
+/* Phone input */
+.phone-input{
+  display:flex;
+  align-items:stretch;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.country-code{
+  display:flex;
+  align-items:center;
+  padding:0 13px;
+  background:var(--paper);
+  border-right:1px solid var(--line);
+  color:var(--ink-soft);
+  font-size:14px;
+  font-weight:600;
+}
+
+.phone-input input{
+  border:0 !important;
+  border-radius:0 !important;
+  outline:none !important;
+  flex:1;
+  min-width:0;
+}
+
+.field-hint{
+  display:block;
+  margin-top:6px;
+  font-size:11px;
+  color:var(--ink-soft);
+}
+
+/* Crop selection */
+.profile-crop-grid{
+  grid-template-columns:repeat(3,1fr);
+  margin-bottom:2px;
+}
+
+.profile-crop-grid .crop-pill{
+  min-height:62px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  padding:8px 5px;
+  border-radius:11px;
+  transition:
+    transform .18s ease,
+    border-color .18s ease,
+    background .18s ease;
+}
+
+.profile-crop-grid .crop-pill:hover{
+  transform:translateY(-1px);
+  border-color:var(--forest);
+}
+
+.profile-crop-grid .crop-pill.selected{
+  box-shadow:inset 0 0 0 1px rgba(47,75,60,0.08);
+}
+
+.profile-crop-icon{
+  font-size:22px;
+  line-height:1;
+}
+
+/* Error */
+.profile-error{
+  margin:4px 0 14px;
+  padding:10px 12px;
+  border-radius:9px;
+  background:rgba(185,92,58,0.08);
+  border:1px solid rgba(185,92,58,0.20);
+  color:var(--clay);
+  font-size:13px;
+}
+
+/* CTA */
+.profile-submit{
+  min-height:48px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-size:15px;
+}
+
+.profile-submit span{
+  font-size:19px;
+  line-height:1;
+  transition:transform .2s ease;
+}
+
+.profile-submit:hover span{
+  transform:translateX(3px);
+}
+
+/* Security note */
+.profile-security{
+  margin-top:16px;
+  padding-top:14px;
+  border-top:1px solid var(--line);
+  text-align:center;
+  color:var(--ink-soft);
+  font-size:10.5px;
+  line-height:1.45;
+}
+
+/* Mobile */
+@media (max-width:600px){
+
+  .farmer-profile-screen{
+    padding:12px;
+  }
+
+  .farmer-profile-card{
+    padding:22px 18px 18px;
+    border-radius:18px;
+  }
+
+  .profile-top{
+    margin-bottom:18px;
+  }
+
+  .profile-hero{
+    margin-bottom:20px;
+  }
+
+  .profile-avatar{
+    width:64px;
+    height:64px;
+    font-size:32px;
+  }
+
+  .profile-hero h1{
+    font-size:26px;
+  }
+
+  .profile-crop-grid{
+    gap:8px;
+  }
+
+  .profile-crop-grid .crop-pill{
+    min-height:58px;
+    font-size:11px;
+  }
+
+  .profile-crop-icon{
+    font-size:20px;
+  }
+}
+
+/* =========================================================
+   OTP VERIFICATION UI
+   ========================================================= */
+
+.otp-screen{
+  min-height:100vh;
+  padding:20px 14px;
+  background:
+    radial-gradient(
+      circle at top center,
+      rgba(217,169,76,0.10),
+      transparent 40%
+    ),
+    var(--bg);
+}
+
+.otp-card{
+  max-width:430px;
+  padding:28px 30px 24px;
+  text-align:center;
+  border-radius:20px;
+  box-shadow:0 18px 45px rgba(34,55,41,0.09);
+}
+
+.otp-back{
+  position:absolute;
+  top:18px;
+  left:18px;
+  width:36px;
+  height:36px;
+  border-radius:10px;
+  border:1px solid var(--line);
+  background:#fff;
+  color:var(--forest-dark);
+  font-size:20px;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:
+    background .2s ease,
+    transform .2s ease;
+}
+
+.otp-back:hover{
+  background:var(--sage);
+  transform:translateX(-2px);
+}
+
+.otp-icon{
+  width:68px;
+  height:68px;
+  margin:4px auto 14px;
+  border-radius:50%;
+  background:var(--sage);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:31px;
+  box-shadow:0 6px 18px rgba(47,75,60,0.10);
+}
+
+.otp-brand{
+  justify-content:center;
+  margin-bottom:16px;
+}
+
+.otp-card h1{
+  margin-bottom:8px;
+}
+
+.otp-card p.sub{
+  max-width:340px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:24px;
+}
+
+/* OTP inputs */
+.otp-boxes{
+  display:flex;
+  justify-content:center;
+  gap:11px;
+  margin:4px 0 20px;
+}
+
+.otp-boxes input{
+  width:54px;
+  height:58px;
+  padding:0;
+  border:1.5px solid var(--line);
+  border-radius:12px;
+  background:#fff;
+  color:var(--forest-dark);
+  font-size:24px;
+  font-weight:700;
+  font-family:'Inter', sans-serif;
+  text-align:center;
+  box-sizing:border-box;
+  transition:
+    border-color .18s ease,
+    box-shadow .18s ease,
+    transform .18s ease;
+}
+
+.otp-boxes input:focus{
+  outline:none;
+  border-color:var(--forest);
+  box-shadow:0 0 0 3px rgba(47,75,60,0.10);
+  transform:translateY(-1px);
+}
+
+/* Verify */
+.otp-verify-btn{
+  min-height:48px;
+  border-radius:11px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  font-size:15px;
+}
+
+.otp-verify-btn span{
+  font-size:19px;
+  transition:transform .2s ease;
+}
+
+.otp-verify-btn:hover span{
+  transform:translateX(3px);
+}
+
+.otp-verify-btn:disabled{
+  opacity:.5;
+  cursor:not-allowed;
+}
+
+.otp-verify-btn:disabled:hover{
+  background:var(--forest);
+}
+
+/* Resend */
+.otp-resend{
+  margin-top:16px;
+  min-height:20px;
+  font-size:13px;
+  color:var(--ink-soft);
+}
+
+.otp-resend button{
+  border:0;
+  padding:0;
+  background:none;
+  color:var(--forest);
+  font-size:13px;
+  font-weight:700;
+  cursor:pointer;
+  text-decoration:underline;
+  text-underline-offset:2px;
+}
+
+.otp-resend button:hover{
+  color:var(--forest-dark);
+}
+
+/* Prototype note */
+.otp-demo-note{
+  margin:16px 0 0;
+  padding:9px 10px;
+  border-radius:9px;
+  background:rgba(217,169,76,0.10);
+  color:var(--ink-soft);
+  font-size:10.5px !important;
+  line-height:1.4;
+}
+
+/* Mobile */
+@media (max-width:600px){
+
+  .otp-screen{
+    padding:12px;
+  }
+
+  .otp-card{
+    padding:25px 18px 20px;
+    border-radius:18px;
+  }
+
+  .otp-icon{
+    width:62px;
+    height:62px;
+    font-size:28px;
+  }
+
+  .otp-boxes{
+    gap:8px;
+  }
+
+  .otp-boxes input{
+    width:50px;
+    height:55px;
+    font-size:22px;
+  }
+}
+
+@media (max-width:360px){
+
+  .otp-boxes{
+    gap:6px;
+  }
+
+  .otp-boxes input{
+    width:46px;
+    height:52px;
+  }
+}
+
+/* =========================================================
+   BUYER / ADMIN LOGIN UI
+   ========================================================= */
+
+.role-login-screen{
+  min-height:100vh;
+  padding:20px 14px;
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(217,169,76,0.10),
+      transparent 38%
+    ),
+    var(--bg);
+}
+
+.role-login-card{
+  max-width:440px;
+  padding:30px 30px 24px;
+  border-radius:20px;
+  box-shadow:0 18px 45px rgba(34,55,41,0.09);
+}
+
+.role-login-card .profile-back{
+  top:18px;
+  left:18px;
+}
+
+.role-login-icon{
+  width:74px;
+  height:74px;
+  margin:2px auto 14px;
+  border-radius:50%;
+  background:var(--sage);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:35px;
+  box-shadow:0 7px 18px rgba(47,75,60,0.10);
+}
+
+.role-login-brand{
+  justify-content:center;
+  margin-bottom:16px;
+}
+
+.role-login-card h1{
+  text-align:center;
+  margin-bottom:8px;
+}
+
+.role-login-card > p.sub{
+  text-align:center;
+  max-width:350px;
+  margin-left:auto;
+  margin-right:auto;
+  margin-bottom:25px;
+}
+
+/* Form */
+.role-login-card .field{
+  margin-bottom:18px;
+}
+
+.role-login-card input{
+  min-height:46px;
+  box-sizing:border-box;
+  border-radius:10px;
+}
+
+.role-login-card input:focus{
+  border-color:var(--forest);
+  outline:2px solid rgba(47,75,60,0.12);
+  outline-offset:1px;
+}
+
+/* Buyer phone */
+.role-login-card .phone-input{
+  display:flex;
+  align-items:stretch;
+  border:1px solid var(--line);
+  border-radius:10px;
+  overflow:hidden;
+  background:#fff;
+}
+
+.role-login-card .country-code{
+  display:flex;
+  align-items:center;
+  padding:0 13px;
+  background:var(--paper);
+  border-right:1px solid var(--line);
+  color:var(--ink-soft);
+  font-size:14px;
+  font-weight:600;
+}
+
+.role-login-card .phone-input input{
+  border:0 !important;
+  outline:none !important;
+  border-radius:0 !important;
+  flex:1;
+  min-width:0;
+}
+
+/* Error */
+.role-login-card .form-error{
+  padding:10px 12px;
+  border-radius:9px;
+  margin-bottom:14px;
+  background:rgba(185,92,58,0.08);
+  border:1px solid rgba(185,92,58,0.20);
+  color:var(--clay);
+  font-size:13px;
+}
+
+/* CTA */
+.role-login-card > .btn{
+  min-height:48px;
+  border-radius:11px;
+  font-weight:700;
+}
+
+/* Bottom switch */
+.role-login-card .hint{
+  margin-top:18px;
+}
+
+.role-login-card .hint button{
+  color:var(--forest);
+  font-weight:700;
+}
+
+/* Mobile */
+@media (max-width:600px){
+
+  .role-login-screen{
+    padding:12px;
+  }
+
+  .role-login-card{
+    padding:25px 18px 20px;
+    border-radius:18px;
+  }
+
+  .role-login-icon{
+    width:64px;
+    height:64px;
+    font-size:31px;
+  }
+}

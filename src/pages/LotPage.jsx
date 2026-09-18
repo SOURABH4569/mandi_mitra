@@ -10,6 +10,7 @@ import { useLanguage } from "../i18n/LanguageContext";
 export default function LotPage() {
   const { t } = useLanguage();
   const { farmer } = useOutletContext();
+
   const [crop, setCrop] = useState(farmer?.crop || "wheat");
   const [quantity, setQuantity] = useState("");
   const [harvestDate, setHarvestDate] = useState("");
@@ -63,11 +64,13 @@ export default function LotPage() {
       setBackendOk(true);
     } catch (e) {
       setBackendOk(false);
+
       const localLot = {
         id: "local_" + Date.now(),
         ...payload,
         status: t("lot.localModeStatus"),
       };
+
       setLots((prev) => [localLot, ...prev]);
     }
 
@@ -90,9 +93,39 @@ export default function LotPage() {
       )}
 
       <div className="lot-page">
+        {/* Create Lot */}
         <div className="panel lot-form-panel">
           <div className="panel-head">
-            <h2>{t("lot.formTitle")}</h2>
+            <div>
+              <h2>{t("lot.formTitle")}</h2>
+              <p className="panel-subtext">
+                {farmer?.name
+                  ? `${farmer.name} · ${farmer.village || ""}`
+                  : ""}
+              </p>
+            </div>
+          </div>
+
+          <div className="lot-steps">
+            <div className={`lot-step ${crop ? "active" : ""}`}>
+              <span className="lot-step-number">1</span>
+              <span>{t("lot.cropLabel")}</span>
+            </div>
+
+            <div className={`lot-step ${quantity ? "active" : ""}`}>
+              <span className="lot-step-number">2</span>
+              <span>{t("lot.quantityLabel")}</span>
+            </div>
+
+            <div className={`lot-step ${harvestDate ? "active" : ""}`}>
+              <span className="lot-step-number">3</span>
+              <span>{t("lot.harvestDateLabel")}</span>
+            </div>
+
+            <div className={`lot-step ${photoUrl ? "active" : ""}`}>
+              <span className="lot-step-number">4</span>
+              <span>{t("lot.photoLabel")}</span>
+            </div>
           </div>
 
           <div className="lot-form-body">
@@ -113,7 +146,10 @@ export default function LotPage() {
             </div>
 
             <div className="field">
-              <label htmlFor="quantity">{t("lot.quantityLabel")}</label>
+              <label htmlFor="quantity">
+                {t("lot.quantityLabel")}
+              </label>
+
               <input
                 id="quantity"
                 type="number"
@@ -128,6 +164,7 @@ export default function LotPage() {
               <label htmlFor="harvestDate">
                 {t("lot.harvestDateLabel")}
               </label>
+
               <input
                 id="harvestDate"
                 type="date"
@@ -138,7 +175,9 @@ export default function LotPage() {
 
             <div className="field">
               <label>{t("lot.photoLabel")}</label>
+
               <PhotoUploader onGraded={handleGraded} />
+
               <QualityGradeResult result={gradeResult} />
             </div>
 
@@ -149,22 +188,34 @@ export default function LotPage() {
               onClick={handleSubmit}
               disabled={submitting}
             >
-              {submitting ? t("lot.submitting") : t("lot.submitButton")}
+              {submitting
+                ? t("lot.submitting")
+                : t("lot.submitButton")}
             </button>
           </div>
         </div>
 
+        {/* Existing Lots */}
         <div className="panel lot-list-panel">
           <div className="panel-head">
-            <h2>{t("lot.yourLotsTitle")}</h2>
-            <span className="count">
-              {t("lot.lotCount", { count: lots.length })}
+            <div>
+              <h2>{t("lot.yourLotsTitle")}</h2>
+              <p className="panel-subtext">
+                {t("lot.lotCount", { count: lots.length })}
+              </p>
+            </div>
+
+            <span className="lot-count-badge">
+              {lots.length}
             </span>
           </div>
 
           <div className="lot-list">
             {lots.length === 0 && (
-              <div className="lot-empty">{t("lot.noLots")}</div>
+              <div className="lot-empty">
+                <div className="lot-empty-icon">🌾</div>
+                <div>{t("lot.noLots")}</div>
+              </div>
             )}
 
             {lots.map((lot) => (
