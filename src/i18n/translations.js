@@ -77,6 +77,55 @@ export const translations = {
   mr: "कृपया 10 अंकी योग्य मोबाइल नंबर टाका."
 },
 
+    // Dashboard welcome
+  "dashboard.greeting": {
+    hi: "नमस्ते {name} जी 👋",
+    en: "Namaste {name} 👋",
+    mr: "नमस्कार {name} जी 👋"
+  },
+
+  "dashboard.subtitle": {
+    hi: "आज अपनी उपज के लिए सही भाव और सही मंडी देखें।",
+    en: "Find the right price and mandi for your produce today.",
+    mr: "आज तुमच्या शेतमालासाठी योग्य भाव आणि योग्य बाजार पहा."
+  },
+
+  "dashboard.crop": {
+    hi: "फसल",
+    en: "Crop",
+    mr: "पीक"
+  },
+
+  "dashboard.village": {
+    hi: "गांव",
+    en: "Village",
+    mr: "गाव"
+  },
+
+  "dashboard.mandiAction": {
+    hi: "मंडी भाव देखें",
+    en: "View Mandi Prices",
+    mr: "बाजार भाव पहा"
+  },
+
+  "dashboard.lotAction": {
+    hi: "लॉट बनाएं",
+    en: "Create Lot",
+    mr: "लॉट तयार करा"
+  },
+
+  "dashboard.offerAction": {
+    hi: "ऑफर देखें",
+    en: "View Offers",
+    mr: "ऑफर पहा"
+  },
+
+  "dashboard.logout": {
+    hi: "लॉगआउट",
+    en: "Logout",
+    mr: "लॉगआउट"
+  },
+
   // Tabs
   "tabs.mandiBhaav": { hi: "मंडी भाव", en: "Mandi Prices", mr: "बाजार भाव" },
   "tabs.lot": { hi: "लॉट बनाएं", en: "Create Lot", mr: "लॉट तयार करा" },
@@ -101,6 +150,31 @@ export const translations = {
   // Quantity bar
   "qty.label": { hi: "आपकी उपज (क्विंटल में):", en: "Your produce (in quintals):", mr: "तुमचा शेतमाल (क्विंटलमध्ये):" },
   "qty.assumption": { hi: "अनुमान: ₹2.50/किमी/क्विंटल ट्रांसपोर्ट · 2% मंडी कमीशन · ₹15/क्विंटल लोडिंग-लेबर", en: "Assumption: ₹2.50/km/quintal transport · 2% mandi commission · ₹15/quintal loading-labour", mr: "गृहीतक: ₹2.50/किमी/क्विंटल वाहतूक · 2% बाजार कमिशन · ₹15/क्विंटल लोडिंग-मजुरी" },
+
+    // Best mandi highlight
+  "mandi.bestForYou": {
+    hi: "आपके लिए सबसे बेहतर मंडी",
+    en: "Best mandi for you",
+    mr: "तुमच्यासाठी सर्वोत्तम बाजार"
+  },
+
+  "mandi.bestDistance": {
+    hi: "{km} किमी दूर",
+    en: "{km} km away",
+    mr: "{km} किमी दूर"
+  },
+
+  "mandi.bestMandiPrice": {
+    hi: "मंडी भाव",
+    en: "Mandi Price",
+    mr: "बाजार भाव"
+  },
+
+  "mandi.bestNetEarning": {
+    hi: "आपकी अनुमानित नेट कमाई",
+    en: "Your estimated net earning",
+    mr: "तुमची अंदाजे निव्वळ कमाई"
+  },
 
   // Recommendation banner
   "rec.risingTitle": { hi: "भाव बढ़ रहे हैं — थोड़ा रुककर बेचें", en: "Prices are rising — consider waiting a little", mr: "भाव वाढत आहेत — थोडं थांबून विका" },

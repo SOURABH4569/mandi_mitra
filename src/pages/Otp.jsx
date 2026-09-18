@@ -2,7 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useLanguage } from "../i18n/LanguageContext";
 
-export default function Otp({ phone }) {
+export default function Otp({ phone, onVerified }) {
   const { t } = useLanguage();
   const navigate = useNavigate();
 
@@ -12,8 +12,13 @@ export default function Otp({ phone }) {
   const inputRefs = useRef([]);
 
   useEffect(() => {
+    if (!phone) {
+      navigate("/profile", { replace: true });
+      return;
+    }
+
     inputRefs.current[0]?.focus();
-  }, []);
+  }, [phone, navigate]);
 
   useEffect(() => {
     if (seconds <= 0) return;
@@ -72,8 +77,9 @@ export default function Otp({ phone }) {
     if (enteredOtp.length !== 4) return;
 
     // Dummy OTP for prototype.
-    // Real OTP verification will be connected later.
-    navigate("/dashboard");
+    // Real OTP provider will be connected later.
+    onVerified();
+    navigate("/dashboard", { replace: true });
   };
 
   const handleResend = () => {
@@ -81,10 +87,13 @@ export default function Otp({ phone }) {
 
     setOtp(["", "", "", ""]);
     setSeconds(30);
+
     inputRefs.current[0]?.focus();
   };
 
-  const isComplete = otp.every((digit) => digit !== "");
+  const isComplete = otp.every(
+    (digit) => digit !== ""
+  );
 
   return (
     <div className="auth-screen otp-screen">
@@ -101,7 +110,9 @@ export default function Otp({ phone }) {
 
         <div className="brand-mark otp-brand">
           <span className="dot" />
-          <span className="brand-name">{t("app.name")}</span>
+          <span className="brand-name">
+            {t("app.name")}
+          </span>
         </div>
 
         <h1>{t("otp.title")}</h1>
@@ -128,10 +139,16 @@ export default function Otp({ phone }) {
               onChange={(e) =>
                 handleChange(index, e.target.value)
               }
-              onKeyDown={(e) => handleKeyDown(index, e)}
+              onKeyDown={(e) =>
+                handleKeyDown(index, e)
+              }
               onPaste={handlePaste}
               aria-label={`OTP digit ${index + 1}`}
-              autoComplete={index === 0 ? "one-time-code" : "off"}
+              autoComplete={
+                index === 0
+                  ? "one-time-code"
+                  : "off"
+              }
             />
           ))}
         </div>
@@ -149,7 +166,7 @@ export default function Otp({ phone }) {
         <div className="otp-resend">
           {seconds > 0 ? (
             <span>
-              {t("otp.resend")}
+              {t("otp.resendIn", { seconds })}
             </span>
           ) : (
             <button
@@ -162,8 +179,8 @@ export default function Otp({ phone }) {
         </div>
 
         <p className="otp-demo-note">
-  {t("otp.demoNote")}
-</p>
+          {t("otp.demoNote")}
+        </p>
       </div>
     </div>
   );
