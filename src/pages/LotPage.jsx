@@ -21,13 +21,17 @@ export default function LotPage() {
   const [backendOk, setBackendOk] = useState(true);
   const [submitting, setSubmitting] = useState(false);
 
-  useEffect(() => {
+  const loadLots = async () => {
     getLots()
       .then((data) => {
         setLots(data);
         setBackendOk(true);
       })
       .catch(() => setBackendOk(false));
+  };
+
+  useEffect(() => {
+    loadLots();
   }, []);
 
   const handleGraded = (result, url) => {
@@ -87,8 +91,15 @@ export default function LotPage() {
         <div className="data-source-note mock">
           {t("lot.backendOfflineNote")}
           <br />
-          <code>cd kisan-mandi-backend && npm start</code>{" "}
-          {t("lot.backendOfflineHint")}
+          <code>cd kisan-mandi-backend && npm start</code>
+          <span> {t("lot.backendOfflineHint")}</span>
+          <button
+            type="button"
+            className="backend-retry"
+            onClick={loadLots}
+          >
+            {t("lot.retryBackend")}
+          </button>
         </div>
       )}
 

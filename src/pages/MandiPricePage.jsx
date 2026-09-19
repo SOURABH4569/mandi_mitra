@@ -11,6 +11,7 @@ import LogisticsPanel from "../components/LogisticsPanel";
 
 import {
   mandis as mockMandis,
+  mandisByCrop,
   farmerLocation,
   cropMeta,
 } from "../data/mandis";
@@ -30,18 +31,22 @@ export default function MandiPricePage() {
   const { farmer } = useOutletContext();
   const { t } = useLanguage();
 
+  const crop = farmer?.crop || "wheat";
+  const cropLabel = cropMeta[crop]?.label || cropMeta.wheat.label;
+
   const [qty, setQty] = useState(20);
   const [selectedMandi, setSelectedMandi] = useState(null);
-  const [mandis, setMandis] = useState(mockMandis);
+  const [mandis, setMandis] = useState(
+    () => mandisByCrop[crop] || mockMandis
+  );
   const [dataSource, setDataSource] = useState("loading");
-
-  const crop = farmer?.crop || "wheat";
-  const cropLabel = cropMeta[crop].label;
 
   useEffect(() => {
     let cancelled = false;
 
     setDataSource("loading");
+    setMandis(mandisByCrop[crop] || mockMandis);
+    setSelectedMandi(null);
 
     fetchLiveMandiPrices({
       commodity: cropLabel === "Gehun" ? "Wheat" : cropLabel,
@@ -55,7 +60,7 @@ export default function MandiPricePage() {
       .catch(() => {
         if (cancelled) return;
 
-        setMandis(mockMandis);
+        setMandis(mandisByCrop[crop] || mockMandis);
         setDataSource("mock");
       });
 

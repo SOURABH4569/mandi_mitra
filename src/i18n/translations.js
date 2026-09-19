@@ -102,6 +102,12 @@ export const translations = {
     mr: "गाव"
   },
 
+  "dashboard.changeCrop": {
+    hi: "फसल बदलें",
+    en: "Change crop",
+    mr: "पीक बदला"
+  },
+
   "dashboard.mandiAction": {
     hi: "मंडी भाव देखें",
     en: "View Mandi Prices",
@@ -234,7 +240,8 @@ export const translations = {
 
   // Lot page
   "lot.backendOfflineNote": { hi: "🟡 बैकएंड से कनेक्ट नहीं हो पाया — लॉट सिर्फ इस ब्राउज़र सेशन में सेव हो रहे हैं।", en: "🟡 Could not connect to backend — lots are only saved in this browser session.", mr: "🟡 बॅकएंडशी कनेक्ट होऊ शकले नाही — लॉट फक्त या ब्राउझर सत्रात सेव्ह होत आहेत." },
-  "lot.backendOfflineHint": { hi: "(टर्मिनल में कोड चलाएं और पेज रीफ्रेश करें)", en: "(run the command in a terminal and refresh the page)", mr: "(टर्मिनलमध्ये कमांड चालवा आणि पेज रिफ्रेश करा)" },
+  "lot.backendOfflineHint": { hi: "(टर्मिनल में कोड चलाएं)", en: "(run the command in a terminal)", mr: "(टर्मिनलमध्ये कमांड चालवा)" },
+  "lot.retryBackend": { hi: "फिर से जांचें", en: "Retry connection", mr: "पुन्हा तपासा" },
   "lot.formTitle": { hi: "नया लॉट बनाएं", en: "Create New Lot", mr: "नवीन लॉट तयार करा" },
   "lot.cropLabel": { hi: "फसल", en: "Crop", mr: "पीक" },
   "lot.quantityLabel": { hi: "मात्रा (क्विंटल में)", en: "Quantity (in quintals)", mr: "प्रमाण (क्विंटलमध्ये)" },
@@ -255,7 +262,8 @@ export const translations = {
   "offers.connectError": { hi: "बैकएंड से कनेक्ट नहीं हो पाया। पहले बैकएंड चलाएं: cd kisan-mandi-backend && npm start", en: "Could not connect to backend. Start the backend first: cd kisan-mandi-backend && npm start", mr: "बॅकएंडशी कनेक्ट होऊ शकले नाही. आधी बॅकएंड सुरू करा: cd kisan-mandi-backend && npm start" },
   "offers.backendOfflineTitle": { hi: "बैकएंड से कनेक्ट नहीं हो पाया", en: "Could not connect to backend", mr: "बॅकएंडशी कनेक्ट होऊ शकले नाही" },
   "offers.backendOfflineDesc": { hi: "खरीदारों के ऑफर देखने के लिए बैकएंड चालू होना ज़रूरी है।", en: "The backend must be running to see buyer offers.", mr: "खरेदीदारांचे ऑफर पाहण्यासाठी बॅकएंड सुरू असणे आवश्यक आहे." },
-  "offers.backendOfflineHint": { hi: "टर्मिनल में यह कमांड चलाएं, फिर पेज रीफ्रेश करें।", en: "Run this command in a terminal, then refresh this page.", mr: "टर्मिनलमध्ये ही कमांड चालवा, नंतर पेज रिफ्रेश करा." },
+  "offers.backendOfflineHint": { hi: "टर्मिनल में यह कमांड चलाएं।", en: "Run this command in a terminal.", mr: "टर्मिनलमध्ये ही कमांड चालवा." },
+  "offers.retryBackend": { hi: "फिर से जांचें", en: "Retry connection", mr: "पुन्हा तपासा" },
   "offers.noLotsTitle": { hi: "अभी कोई लॉट नहीं बना", en: "No lots created yet", mr: "अजून कोणताही लॉट तयार केलेला नाही" },
   "offers.noLotsDesc": { hi: "पहले \"लॉट बनाएं\" टैब से एक लॉट बनाएं — खरीदार तुरंत ऑफर भेजेंगे।", en: "First create a lot from the \"Create Lot\" tab — buyers will send offers instantly.", mr: "आधी \"लॉट तयार करा\" टॅबमधून एक लॉट तयार करा — खरेदीदार लगेच ऑफर पाठवतील." },
   "offers.noOffersForLot": { hi: "इस लॉट के लिए अभी कोई ऑफर नहीं आया।", en: "No offers have come in for this lot yet.", mr: "या लॉटसाठी अजून कोणताही ऑफर आलेला नाही." },

@@ -54,3 +54,25 @@ export const mandis = [
     trend: [2145, 2160, 2178, 2195, 2215, 2232, 2250],
   },
 ];
+
+// Keep the demo useful when the live Agmarknet key is not configured: each
+// crop gets its own price set instead of showing wheat prices for every crop.
+const cropPriceOffsets = {
+  wheat: 0,
+  mustard: 860,
+  potato: -920,
+  onion: 520,
+  paddy: -380,
+  gram: 1120,
+};
+
+export const mandisByCrop = Object.fromEntries(
+  Object.entries(cropPriceOffsets).map(([crop, offset]) => [
+    crop,
+    mandis.map((mandi) => ({
+      ...mandi,
+      price: mandi.price + offset,
+      trend: mandi.trend.map((value) => value + offset),
+    })),
+  ])
+);

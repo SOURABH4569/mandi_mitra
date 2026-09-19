@@ -53,8 +53,16 @@ export default function OffersPage() {
         <p>
           {t("offers.backendOfflineDesc")}
           <br />
-          <code>cd kisan-mandi-backend && npm start</code>,{" "}
-          {t("offers.backendOfflineHint")}
+          <code>cd kisan-mandi-backend && npm start</code>
+          <span>, {t("offers.backendOfflineHint")}</span>
+          <br />
+          <button
+            type="button"
+            className="backend-retry"
+            onClick={loadAll}
+          >
+            {t("offers.retryBackend")}
+          </button>
         </p>
       </div>
     );

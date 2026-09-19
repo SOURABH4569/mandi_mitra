@@ -4,7 +4,7 @@ import TabsNav from "../components/TabsNav";
 import { CROP_KEYS } from "../data/cropMeta";
 import { useLanguage } from "../i18n/LanguageContext";
 
-export default function DashboardLayout({ farmer }) {
+export default function DashboardLayout({ farmer, onFarmerChange }) {
   const { t } = useLanguage();
   const navigate = useNavigate();
 
@@ -15,6 +15,13 @@ export default function DashboardLayout({ farmer }) {
   };
 
   const cropMeta = CROP_KEYS[safeFarmer.crop || "wheat"] || CROP_KEYS.wheat;
+
+  const handleCropChange = (event) => {
+    onFarmerChange?.({
+      ...safeFarmer,
+      crop: event.target.value,
+    });
+  };
 
   const handleLogout = () => {
     sessionStorage.removeItem("kms_authenticated");
@@ -62,6 +69,21 @@ export default function DashboardLayout({ farmer }) {
                     <strong>{safeFarmer.village}</strong>
                   </span>
                 )}
+
+                <label className="crop-switcher">
+                  <span>{t("dashboard.changeCrop")}</span>
+                  <select
+                    value={safeFarmer.crop || "wheat"}
+                    onChange={handleCropChange}
+                    aria-label={t("dashboard.changeCrop")}
+                  >
+                    {Object.entries(CROP_KEYS).map(([key, meta]) => (
+                      <option key={key} value={key}>
+                        {meta.icon} {t(meta.labelKey)}
+                      </option>
+                    ))}
+                  </select>
+                </label>
               </div>
             </div>
           </div>

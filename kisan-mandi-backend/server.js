@@ -13,10 +13,12 @@ const buyers = require("./data/buyers");
 
 const app = express();
 app.use(cors({
-  origin: [
-    "http://localhost:5173",
-    "https://mandi-mitra-umber.vercel.app"
-  ]
+  origin(origin, callback) {
+    const isLocalDevelopment = !origin || /^https?:\/\/(localhost|127\.0\.0\.1):\d+$/.test(origin);
+    const isProduction = origin === "https://mandi-mitra-umber.vercel.app";
+
+    callback(null, isLocalDevelopment || isProduction);
+  }
 }));
 app.use(express.json());
 

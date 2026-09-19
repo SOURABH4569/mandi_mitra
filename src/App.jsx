@@ -104,7 +104,10 @@ export default function App() {
           path="/dashboard"
           element={
             isAuthenticated && farmer ? (
-              <DashboardLayout farmer={farmer} />
+              <DashboardLayout
+                farmer={farmer}
+                onFarmerChange={handleSetFarmer}
+              />
             ) : (
               <Navigate to="/" replace />
             )
