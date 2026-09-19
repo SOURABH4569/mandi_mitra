@@ -1,6 +1,6 @@
-# Kisan Mandi Sahayak — Prototype
+# Mandi Mitra — Prototype
 
-Kisan Mandi Sahayak is a market-intelligence web application designed to help farmers make better selling decisions.
+Mandi Mitra is a market-intelligence web application designed to help farmers make better selling decisions.
 
 The application provides:
 
